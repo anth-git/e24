@@ -53,7 +53,7 @@ function App() {
       };
     });
 
-    return matches.filter(m => !m);
+    return matches.filter(m => m !== undefined);
   }
   
   function parseScore(score: string): [number, number] {
