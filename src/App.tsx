@@ -37,7 +37,10 @@ function App() {
     const lines = results.split('\n');
 
     const matches: Match[] =  lines.map(line => {
-      const parts = line.split(' ');   
+      const parts = line.split(' ');
+      if (parts.length !== 6) {
+        return undefined;
+      }
 
       return {
         team_1: parts[0],
@@ -50,7 +53,7 @@ function App() {
       };
     });
 
-    return matches;   
+    return matches.filter(m => !m);
   }
   
   function parseScore(score: string): [number, number] {
