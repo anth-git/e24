@@ -9,4 +9,3 @@ Romania Ukraine 3:0 0:1 1:2 1:1
 Belgium Slovakia 0:1 2:0 3:0 2:0
 Austria France 0:1 1:2 0:2 0:3
 Test Test 0:1 0:1 0:2 0:3
-Test2 Test3 0:1 0:1 0:2 0:3
