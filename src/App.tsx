@@ -36,7 +36,7 @@ function App() {
   function parseResults(results: string): Match[]  {
     const lines = results.split('\n');
 
-    const matches: (Match | undefined)[] =  lines
+    const matches: Match[] =  lines
     .map(line => line.split(' '))
     .filter(parts => parts.length === 6)
     .map(parts => {
