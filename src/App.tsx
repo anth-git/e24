@@ -113,7 +113,7 @@ function App() {
   const table = results.map(match => {
       return (<>
           <span className='team_1'>{match.team_1}</span>
-          <span className="score">{match.score[0]} - {match.score[1]}</span> 
+          <span className="score">{match.score[0]}-{match.score[1]}</span> 
           <span className='team_2'>{match.team_2}</span>
 
           {
@@ -129,11 +129,10 @@ function App() {
   );
 
   const footer = (<>
-    <div className='footer'>
-      <span></span>    
-      <span>Points:
+    <div className="footer">  
+      <span className="points">Points:
         <span className="tooltip">
-          <div className="info">?</div>
+          <div className="info">i</div>
           <div className="tooltiptext">
             <span>Correct result - 6 points</span>
             <span>Goal difference - 4 points</span>
@@ -141,7 +140,6 @@ function App() {
           </div>
         </span>
       </span>
-      <span></span>
       {users.filter(user => totalPoints.has(user)).map(user => {        
         const [points, rank] = totalPoints.get(user)!;
         return (<span className='rank' data-rank={rank}>{ points }</span>);
