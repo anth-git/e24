@@ -19,7 +19,7 @@ const users = ["aha", "kkz", "pła"];
 function App() {  
 
   const [results, setResults] = useState<Match[]>([]);
-  const [totalPoints, setTotalPoints] = useState<Map<string, number>>(new Map());
+  const [totalPoints, setTotalPoints] = useState<Map<string, [number, number]>>(new Map());
 
   useEffect(() => {
       fetch('results.txt')
@@ -77,10 +77,27 @@ function App() {
     return 0;
   }
 
-  function getTotalPoints(matches: Match[]): Map<string, number> {    
-    return new Map(users.map(user => [
-      user,
-      matches.reduce((sum, match) => sum + getPoints(match, match.predictions.get(user)!), 0)
+  function getTotalPoints(matches: Match[]): Map<string, [number, number]> {
+
+    const data = users.map(user => {
+      const points = matches.reduce((sum, match) => sum + getPoints(match, match.predictions.get(user)!), 0);
+      return { user, points, rank: 0 };
+    });
+
+    data.sort((a, b) => b.points - a.points);
+
+    let rank = 1;
+    for (let i = 0; i < data.length; i++) {      
+        if (i > 0 && data[i].points !== data[i - 1].points) {
+            rank = i + 1;
+        }
+        
+        data[i].rank = rank;
+    }
+
+    return new Map(data.map(x => [
+      x.user,
+      [x.points, x.rank]
     ]));
   }
 
@@ -116,12 +133,15 @@ function App() {
       <span></span>    
       <span>Points:</span>
       <span></span>
-      {users.map(user => (<span>{ totalPoints.get(user) }</span>))}
+      {users.filter(user => totalPoints.has(user)).map(user => {        
+        const [points, rank] = totalPoints.get(user)!;
+        return (<span className='rank' data-rank={rank}>{ points }</span>);
+      })}
       </div>
     </>)
 
   return (
-    <div className='container'>
+    <div>
       <div className='table'>
         {header}
         {table}
