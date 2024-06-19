@@ -58,14 +58,14 @@
 
 .footer {
   display: contents;
+  font-size: 18px;
+  line-height: 2.5;
+  color: #82aaff;
 }
 
 .footer span {
   display: flex;
-  margin: auto;  
-  line-height: 2.5;
-  font-size: 18px;
-  color: #82aaff;
+  margin: auto; 
 }
 
 .footer::after {
@@ -81,9 +81,50 @@
 .rank[data-rank="1"] {
   color: #09d3ac;  
 }
+
 .rank[data-rank="2"] {
   color: #ffcb6b;  
 }
+
 .rank[data-rank="3"] {
   color: #ff5572;  
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext  {
+  visibility: hidden;  
+  background-color: #292D3E;
+  border: 1px solid #82aaff;
+  color: #82aaff;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  font-size: 15px;
+  padding: 10px;
+  width: 180px;
+  line-height: 1.8;
+  margin-left: 4px;
+  margin-top: -93px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.info {
+  background-color: #292D3E;
+  border: 1px solid #82aaff;
+  color: #82aaff;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;  
+  line-height: 15px;
+  margin-left: 4px;
+  margin-top: -8px;
+  font-size: 12px;
+  text-align: center;
 }

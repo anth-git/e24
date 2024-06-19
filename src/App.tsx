@@ -131,7 +131,16 @@ function App() {
   const footer = (<>
     <div className='footer'>
       <span></span>    
-      <span>Points:</span>
+      <span>Points:
+        <span className="tooltip">
+          <div className="info">?</div>
+          <div className="tooltiptext">
+            <span>Correct result - 6 points</span>
+            <span>Goal difference - 4 points</span>
+            <span>Correct outcome - 2 points</span>
+          </div>
+        </span>
+      </span>
       <span></span>
       {users.filter(user => totalPoints.has(user)).map(user => {        
         const [points, rank] = totalPoints.get(user)!;
