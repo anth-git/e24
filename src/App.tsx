@@ -22,7 +22,7 @@ function App() {
   const [totalPoints, setTotalPoints] = useState<Map<string, [number, number]>>(new Map());
 
   useEffect(() => {
-      fetch('results.txt')
+      fetch('results.txt', { cache: 'no-store' })
         .then(response => response.text())
         .then(data => {
           const results = parseResults(data);
