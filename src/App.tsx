@@ -22,9 +22,11 @@ function App() {
   const [totalPoints, setTotalPoints] = useState<Map<string, [number, number]>>(new Map());
 
   useEffect(() => {
-      fetch('results.txt', { cache: 'no-store' })
-        .then(response => response.text())
-        .then(data => {
+
+    fetch("https://api.github.com/gists/c553b3b6fef97cf4b5c2dc3166d13a55", { cache: 'no-store' })
+      .then(response => response.json())
+      .then(data => data["files"]["results.txt"]["content"])
+      .then(data => {
           const results = parseResults(data);
           const totalPoints = getTotalPoints(results);
           setResults(results);
