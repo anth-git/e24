@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
 
-    fetch("https://api.github.com/gists/c553b3b6fef97cf4b5c2dc3166d13a55", { cache: 'no-store' })
+    fetch("https://api.github.com/gists/c553b3b6fef97cf4b5c2dc3166d13a55")
       .then(response => response.json())
       .then(data => data["files"]["results.txt"]["content"])
       .then(data => {
